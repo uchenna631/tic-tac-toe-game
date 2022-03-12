@@ -1,14 +1,26 @@
-function enterUsername(event) {
-    event.preventDefault();
-    let name = document.getElementById('name').value;
-    let welcomeText = `
-    <form action="#" target="#">
-    <p>Hello! ${name}, choose your Marker 
-    <input type="radio" id="x" name="marker" value="X"><label for="x">X</label>
-    <input type="radio" id="o" name="marker" value="O"><label for="o">O</label>
-   </form>        
-    `;
-    document.getElementById('welcome-text').innerHTML = welcomeText;
-}
+// Let DOM content load before the JavaScript
 
-document.addEventListener('submit', enterUsername);
+/**
+ * Main navigation for the Single Page App thingy
+ */
+ document.addEventListener('DOMContentLoaded', function() {
+    let menuItems = document.getElementsByClassName('menu-item');
+    for (let menuItem of menuItems) {
+        menuItem.addEventListener('click', function(){
+            if (this.textContent=='Play') {
+                alert('You clicked play button');
+            }
+            else if (this.textContent =='Instruction') {
+                alert('You clicked Instructions button');
+            }
+
+            else if ( this.textContent == 'Feedback') {
+                alert('You clicked Feedback button');
+            }
+            else {
+                alert('Unknown command')
+            }
+        })
+    }
+
+ })
