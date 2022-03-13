@@ -99,6 +99,11 @@ function createScoreBoard(scoreState) {
 `
 }
 
+/**
+ * 
+ * @param {Marker X or O} gameState 
+ * @returns a 3 by 3 table of X and O marker
+ */
 function createGameBoard(gameState) {
     
     let gameBoard = `
@@ -117,7 +122,7 @@ function createGameBoard(gameState) {
     `;
     }
 
-    gameBoard += `
+    gameBoard += `  
             </tbody>
         </table>
     </div>
