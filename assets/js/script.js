@@ -76,9 +76,14 @@ function displayPlay() {
 
     // Enable the restart game button.
 
-    document.getElementById("game-restart").addEventListener("click", displayPlay)
+    // document.getElementById("game-restart").addEventListener("click", displayPlay)
 }
 
+/**
+ * function to create HTML for the score display 
+ * @param {number} scoreState 
+ * @returns HTML string literal
+ */
 function createScoreBoard(scoreState) {
     return `
     <div id="score-board">
@@ -94,7 +99,32 @@ function createScoreBoard(scoreState) {
 `
 }
 
-function createGameBoard(gameState) {}
+function createGameBoard(gameState) {
+    
+    let gameBoard = `
+    <div id="game-board">
+        <table>
+            <tbody>
+             `;
+    for (var i = 0; i < 3; i++) {
+        gameBoard += `            <tr>`;
+        for (var j = 0; j < 3; j++) {
+            gameBoard += `
+                    <td loacation="${i}-${j}">${gameState[i][j].toUpperCase()}</td>`;
+                } console.log("Good")
+        gameBoard += `
+                </tr>
+    `;
+    }
+
+    gameBoard += `
+            </tbody>
+        </table>
+    </div>
+    `;
+    return gameBoard;
+
+}
 
 function createSettings(settingsState) {}
 
