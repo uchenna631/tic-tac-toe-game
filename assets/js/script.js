@@ -6,11 +6,12 @@
  document.addEventListener('DOMContentLoaded', function() {
     let menuItems = document.getElementsByClassName('menu-item');
     for (let menuItem of menuItems) {
-        menuItem.addEventListener('click', function(){
-            if (this.textContent=='Play') {
-                alert('You clicked play button');
+        menuItem.addEventListener('click', function() {
+            if (this.textContent =='Play') {
+                displayPlay()
             }
             else if (this.textContent =='Instruction') {
+                
                 alert('You clicked Instructions button');
             }
 
@@ -22,5 +23,79 @@
             }
         })
     }
+    // Default page on DOMContentLoaded
+    displayPlay();
 
  })
+
+ // Display functions used by main navigation
+
+/**
+ * Display game section
+ */
+ 
+function displayPlay() {
+    // Unless you find the state, initialize with empty values
+    let scoreState;
+    if (!scoreState) {
+        scoreState = {
+            player : 0,
+            computer : 0
+        };
+    } else {
+        scoreState = getScoreState();
+    }
+
+    let gameState;
+    if (!gameState); {
+        gameState = [
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""]
+        ];
+    }
+
+    let settingsState;
+    if (!settingsState) {
+        settingsState = true;
+    }
+
+    // Create HTML blocks and compose the HTML page.
+
+    let score = createScoreBoard(scoreState);
+    let game = createGameBoard(gameState);
+    let settings = createSettings(settingsState);
+
+    document.getElementsByTagName("section")[0].innerHTML = `
+    ${score}
+    ${game}
+    ${settings}
+    `
+    // Start the game here
+    startGame();
+
+    // Enable the restart game button.
+
+    document.getElementById("game-restart").addEventListener("click", displayPlay)
+}
+
+function createScoreBoard(scoreState) {
+    return `
+    <div id="score-board">
+        <div id="player">
+            <h2 id="player-label" class="label">Player</h2>
+            <span id="player-score" class="score">${scoreState.player}</span>
+        </div>
+        <div id="computer">
+            <h2 id="computer-label" class="label">Computer</h2>
+            <span id="computer-score" class="score">${scoreState.computer}</span>
+        </div>
+    </div>
+`
+}
+
+function createGameBoard(gameState) {}
+
+function createSettings(settingsState) {}
+
+function startGame() {}
