@@ -8,7 +8,7 @@
     for (let menuItem of menuItems) {
         menuItem.addEventListener('click', function() {
             if (this.textContent =='Play') {
-                displayPlay()
+                displayGame()
             }
             else if (this.textContent =='Instruction') {
                 
@@ -24,7 +24,7 @@
         })
     }
     // Default page on DOMContentLoaded
-    displayPlay();
+    displayGame();
 
  })
 
@@ -34,7 +34,7 @@
  * Display game section
  */
  
-function displayPlay() {
+function displayGame() {
     // Unless you find the state, initialize with empty values
     let scoreState;
     if (!scoreState) {
@@ -76,7 +76,7 @@ function displayPlay() {
 
     // Enable the restart game button.
 
-    // document.getElementById("game-restart").addEventListener("click", displayPlay)
+    document.getElementById("restart-game").addEventListener("click", displayGame)
 }
 
 /**
@@ -131,6 +131,14 @@ function createGameBoard(gameState) {
 
 }
 
-function createSettings(settingsState) {}
+function createSettings(settingsState) {
+    let checked = settingsState ? 'checked': '';
+        return `
+        <div id="settings">
+            
+            <button id="restart-game">Restart game</button>
+        </div>
+        `;
+}
 
 function startGame() {}
